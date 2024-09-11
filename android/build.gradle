@@ -20,8 +20,13 @@ rootProject.allprojects {
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
+    if (project.android.hasProperty('namespace')) {
+        namespace 'xyz.justsoft.video_thumbnail'
+    }
+
     compileSdkVersion 33
 
     defaultConfig {
@@ -30,5 +35,14 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
